@@ -13,6 +13,7 @@
     "express": "^4.18.2"
   },
   "ampt": {
-    "app": "javascript-express-api"
+    "app": "javascript-express-api",
+    "org": "andreasfuchs201659"
   }
 }
