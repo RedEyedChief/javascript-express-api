@@ -1,31 +1,13 @@
-import { http } from "@ampt/sdk";
-import express, { Router } from "express";
+import { http }             from "@ampt/sdk";
+import express              from "express";
+import middlewares          from './lib/middlewares.js';
+import router               from './lib/router.js';
 
 const app = express();
 
-const api = Router();
+app.use( middlewares.json );
+app.use( middlewares.cors );
 
-api.get("/hello", (req, res) => {
-  return res.status(200).send({ message: "Hello from the public api!" });
-});
-
-api.get("/greet/:name", (req, res) => {
-  const { name } = req.params;
-
-  if (!name) {
-    return res.status(400).send({ message: "Missing route param for `name`!" });
-  }
-
-  return res.status(200).send({ message: `Hello ${name}!` });
-});
-
-api.post("/submit", async (req, res) => {
-  return res.status(200).send({
-    body: req.body,
-    message: "You just posted data",
-  });
-});
-
-app.use("/api", api);
+app.use( "/api", router );
 
 http.node.use(app);
