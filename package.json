@@ -9,6 +9,7 @@
     "start": "ampt"
   },
   "dependencies": {
+    "@ampt/cli": "^1.0.36",
     "@ampt/sdk": "^1.0.13",
     "body-parser": "^1.20.2",
     "connect-busboy": "^1.0.0",
